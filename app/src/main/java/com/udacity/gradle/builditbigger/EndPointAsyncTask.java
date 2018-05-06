@@ -12,13 +12,11 @@ import com.udacity.gradle.builditbigger.backend.jokeApi.JokeApi;
 
 import java.io.IOException;
 
-public abstract class EndPointAsyncTask extends AsyncTask<Context, Void, String> {
+public abstract class EndPointAsyncTask extends AsyncTask<Void, Void, String> {
     private static JokeApi myApiService = null;
     private static String webAddress = "http://10.0.2.2:8080/_ah/api/";
-    private Context context;
-
     @Override
-    protected String doInBackground(Context ... params) {
+    protected String doInBackground(Void ... params) {
         if(myApiService == null) {  // Only do this once
             JokeApi.Builder builder = new JokeApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -36,16 +34,10 @@ public abstract class EndPointAsyncTask extends AsyncTask<Context, Void, String>
 
             myApiService = builder.build();
         }
-
-        context = params[0];
-
         try {
             return myApiService.getJoke().execute().getData();
         } catch (IOException e) {
             return e.getMessage();
         }
-    }
-    public Context getContext(){
-        return context;
     }
 }

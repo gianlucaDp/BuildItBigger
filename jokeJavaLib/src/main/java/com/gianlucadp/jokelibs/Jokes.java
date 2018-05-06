@@ -31,10 +31,10 @@ public class Jokes {
 
     };
 
-    public static String getRandomJoke(){
+    public static String getRandomJoke() {
         Random rand = new Random();
 
-        int  n = rand.nextInt(jokes.length);
+        int n = rand.nextInt(jokes.length);
         return jokes[n];
     }
 

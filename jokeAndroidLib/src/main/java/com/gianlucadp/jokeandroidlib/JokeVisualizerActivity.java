@@ -2,8 +2,8 @@ package com.gianlucadp.jokeandroidlib;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import java.io.UnsupportedEncodingException;
@@ -16,7 +16,7 @@ public class JokeVisualizerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.joke_vistualizer_activity);
-        if (getIntent().hasExtra(JOKE_EXTRA_KEY)){
+        if (getIntent().hasExtra(JOKE_EXTRA_KEY)) {
             TextView joke = findViewById(R.id.tv_joke);
             try {
                 joke.setText(new String(getIntent().getStringExtra(JOKE_EXTRA_KEY).getBytes(), "UTF-8"));
